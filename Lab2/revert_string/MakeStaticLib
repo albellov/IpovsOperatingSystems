@@ -1,0 +1,11 @@
+static_revert: main.o libsrevert.a 
+	gcc -o static_revert main.o -L. -lsrevert 
+
+main.o: main.c 
+	gcc -c main.c 
+
+libsrevert.a: revert_string.o 
+	ar cr libsrevert.a revert_string.o
+
+revert_string.o: revert_string.c 
+	gcc -c revert_string.c

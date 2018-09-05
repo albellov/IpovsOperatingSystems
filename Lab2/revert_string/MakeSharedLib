@@ -1,0 +1,11 @@
+shared_revert: main.o libsrevert.so
+	gcc -o shared_revert main.o -L. -lsrevert -Wl,-rpath,.
+
+main.o: main.c
+	gcc -c main.c
+
+libsrevert.so: revert_string.o
+	gcc -shared -o libsrevert.so revert_string.o
+
+revert_string.o: revert_string.c
+	gcc -c -fPIC revert_string.c
